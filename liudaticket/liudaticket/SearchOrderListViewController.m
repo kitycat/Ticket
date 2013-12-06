@@ -17,7 +17,6 @@
 @interface SearchOrderListViewController ()<MJRefreshBaseViewDelegate>
 {
     MJRefreshHeaderView *_header;
-    MJRefreshFooterView *_footer;
 }
 @end
 
@@ -49,21 +48,8 @@
     _header = [[MJRefreshHeaderView alloc] init];
     _header.delegate = self;
     _header.scrollView = self.tableViewList;
-    _footer = [[MJRefreshFooterView alloc] init];
-    _footer.delegate = self;
-    _footer.scrollView = self.tableViewList;
-    
-    
-    
-    
-    //    _footer.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-    //        // 2秒后刷新表格
-    //        [vc performSelector:@selector(reloadFooter) withObject:nil afterDelay:1];
-    //    };
-    
+
     _header.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
-        
-        // 2秒后刷新表格
         [vc performSelector:@selector(reloadHeader) withObject:nil afterDelay:1];
     };
     
@@ -88,7 +74,7 @@
             {
                 [self.tableViewList reloadData];
             }
-            
+            //NSLog(@"ddddddddddddd");
         }
         [_header endRefreshing];
         [hud hide:YES];
@@ -130,25 +116,14 @@
 {
     return 40;
 }
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//    @synthesize NameLabel;        //商品名称
-//    @synthesize OrderTypeLabel;   //订单类型
-//    @synthesize OrderStateLabel;  //订单状态
-//    @synthesize VolumeLabel;      //消费卷码
-//    @synthesize ExpiredTimeLabel; //过期时间
-//    @synthesize OrderNumberLabel; //订单编号
-//    @synthesize OrderTime;        //下单时间
-//    @synthesize Money;            //支付金额
-
     OrderListInfoController *vc=[OrderListInfoController new];
     vc.Dic_OrderInfo=[self.arraylist objectAtIndex:indexPath.row];
-    NSLog(@"字典是%@",[self.arraylist objectAtIndex:indexPath.row]);
+    //NSLog(@"字典是%@",[self.arraylist objectAtIndex:indexPath.row]);
     [self.navigationController pushViewController:vc animated:YES];
-
-
 }
+
 -(NSString *)GetPaystatus:(NSString *)strPaytype
 {
     if ([strPaytype isEqualToString:@"true"]) {

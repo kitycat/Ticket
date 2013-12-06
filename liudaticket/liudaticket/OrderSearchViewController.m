@@ -116,8 +116,8 @@
 {
     if (_TextFieldPerson==nil) {
         //创建联系人Label
-        UILabel *labelPerson =[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 40)];
-        labelPerson.text=@"联系人";
+        UILabel *labelPerson =[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
+        labelPerson.text=@"联系人:  ";
         labelPerson.backgroundColor=[UIColor clearColor];
         labelPerson.font=[UIFont systemFontOfSize:14.0];
         labelPerson.textAlignment=NSTextAlignmentRight;
@@ -139,8 +139,8 @@
 {
     if (_TextFieldPhone==nil) {
         //创建联系人Label
-        UILabel *labelPhone =[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 40)];
-        labelPhone.text=@"联系方式";
+        UILabel *labelPhone =[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 40)];
+        labelPhone.text=@"联系方式:  ";
         labelPhone.backgroundColor=[UIColor clearColor];
         labelPhone.font=[UIFont systemFontOfSize:14.0];
         labelPhone.textAlignment=NSTextAlignmentRight;
@@ -154,7 +154,7 @@
         _TextFieldPhone.font=[UIFont systemFontOfSize:14.0f];
         _TextFieldPhone.returnKeyType=UIReturnKeyDone;
         _TextFieldPhone.delegate=self;
-        //_TextFieldPhone.delegate=self;
+       
     }
     return _TextFieldPhone;
 
