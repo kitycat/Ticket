@@ -7,12 +7,12 @@
 //
 
 #import "AroundViewController.h"
-
+#import <CoreLocation/CoreLocation.h>
 @interface AroundViewController ()
 
 @end
 
-@implementation AroundViewController
+@implementation AroundViewController(TemporaryHack)  
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,7 +24,7 @@
         if([[[UIDevice currentDevice] systemVersion] floatValue] >=5.0)
         {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabbar_category"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabbar_category_unselected"]];
-        }
+                   }
     }
     return self;
 }
@@ -32,9 +32,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+   
 }
-
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    checkinLocation = newLocation;
+    
+    //do something else
+}
+- (void) setupLocationManager {
+    self->locationManager = [[CLLocationManager alloc] init];
+    if ([CLLocationManager locationServicesEnabled]) {
+        NSLog( @"Starting CLLocationManager" );
+        self->locationManager.delegate = self;
+        self->locationManager.distanceFilter = 200;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [self->locationManager startUpdatingLocation];
+    } else {
+        NSLog( @"Cannot Starting CLLocationManager" );
+        /*self.locationManager.delegate = self;
+         self.locationManager.distanceFilter = 200;
+         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+         [self.locationManager startUpdatingLocation];*/
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

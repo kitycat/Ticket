@@ -120,7 +120,7 @@
 {
     OrderListInfoController *vc=[OrderListInfoController new];
     vc.Dic_OrderInfo=[self.arraylist objectAtIndex:indexPath.row];
-    //NSLog(@"字典是%@",[self.arraylist objectAtIndex:indexPath.row]);
+    NSLog(@"字典是%@",[self.arraylist objectAtIndex:indexPath.row]);
     [self.navigationController pushViewController:vc animated:YES];
 }
 

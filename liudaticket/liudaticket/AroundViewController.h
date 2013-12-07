@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AroundViewController : UIViewController
-
+#import "BMapKit.h"
+#import <CoreLocation/CoreLocation.h>
+@interface AroundViewController : UIViewController<CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+    CLLocation *checkinLocation;
+}
 @end

@@ -12,6 +12,8 @@
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 @class ViewController;
 
+
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -20,4 +22,6 @@
 @property (strong, nonatomic) MKNetworkEngine *engine;
 //声明tabBarController
 @property(strong,nonatomic)UITabBarController *tabBarController;
+
 @end
+

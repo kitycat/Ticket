@@ -28,6 +28,7 @@
     }
     return self;
 }
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{}
 
 #pragma mark 初始化
 - (void)initial
